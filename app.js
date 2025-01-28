@@ -16,6 +16,9 @@ weather.temperature = {
 const KELVIN = 273;
 // API KEY
 const key = "41********c****28**********a5"; // Here, is necessary to put your key
+//[ALERT]
+// Security: On log history of this project my key was exposeded; Because thar I need to inactive old key;
+// You was need to attention to this action too, Ok 😉
 
 // CHECK IF BROWSER SUPPORTS GEOLOCATION
 if ('geolocation' in navigator) {
