@@ -61,7 +61,7 @@ function OKshowError(error) {
 
 // GET WEATHER FROM API PROVIDER
 function getWeather(latitude, longitude) {
-    let api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
+    let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
     
  //   fetch(api).then(function(responser){
  //       let data = response.json();
@@ -80,9 +80,9 @@ function getWeather(latitude, longitude) {
         return response.json();
     }).then(function(data) {
         // Agora você pode acessar os dados JSON aqui
-        // console.log(data);
+       console.log(data);
        weather.temperature.value = Math.floor(data.main.temp - KELVIN);
-       weather.description = data.weather[0].icon;
+       weather.description = data.weather[0].description;
        weather.iconId = data.weather[0].icon;
        weather.city = data.name;
        weather.country = data.sys.country;
@@ -94,6 +94,9 @@ function getWeather(latitude, longitude) {
 
 // DISPLAY WEATHER TO UI
 function displayWeather() {
-    // console.log(weather.iconId);
     iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
+    tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
+    descElement.innerHTML = weather.description;
+    locationElement.innerHTML = `${weather.city}, ${weather.country}`;
+    // notificationElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
 }
