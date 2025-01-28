@@ -1,6 +1,3 @@
-// Tutorial by http://youtube.com/CodeExplained
-// api key : 82005d27a116c2880c8f0fcb866998a0
-
 // SELECT ELEMENTS
 const iconElement = document.querySelector(".weather-icon");
 const tempElement = document.querySelector(".temperature-value p");
@@ -40,8 +37,8 @@ function showError(error) {
     notificationElement.style.display = "block";
     notificationElement.innerHTML = `<p>${error.message}</p>`;
 }
-
-function OKshowError(error) {
+/*
+function showError(error) {
     notificationElement.style.display = "block";
     switch(error.code) {
         case error.PERMISSION_DENIED:
@@ -58,29 +55,14 @@ function OKshowError(error) {
             break;
     }
 }
-
+*/
 // GET WEATHER FROM API PROVIDER
 function getWeather(latitude, longitude) {
     let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
     
- //   fetch(api).then(function(responser){
- //       let data = response.json();
- //       // return data;
-//    }).then(function(data){
-//        weather.temperature.value = Math.floor(data.main.temp - KELVIN);
-//        weather.description = data.weather[0].icon;
-//        weather.iconId = data.weather[0].icon;
-//        weather.city = data.name;
-//        weather.country = data.sys.country;
-//    }).then(function(){
-//        displayWeather();
-    // });
-
     fetch(api).then(function(response) {
         return response.json();
     }).then(function(data) {
-        // Agora você pode acessar os dados JSON aqui
-       console.log(data);
        weather.temperature.value = Math.floor(data.main.temp - KELVIN);
        weather.description = data.weather[0].description;
        weather.iconId = data.weather[0].icon;
